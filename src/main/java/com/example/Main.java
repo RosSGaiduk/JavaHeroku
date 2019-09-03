@@ -76,12 +76,6 @@ public class Main {
     }
   }
 
-  @RequestMapping("/requestdata")
-  public String displayLoginPage(HttpServletRequest request){
-    System.out.println("Request" + new Gson().toJson(request));
-    return "login";
-  }
-
 
   @Bean
   public DataSource dataSource() throws SQLException {
