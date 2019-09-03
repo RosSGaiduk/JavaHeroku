@@ -16,6 +16,7 @@
 
 package com.example;
 
+import com.google.gson.Gson;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -73,6 +75,13 @@ public class Main {
       return "error";
     }
   }
+
+  @RequestMapping("/requestdata")
+  public String displayLoginPage(HttpServletRequest request){
+    System.out.println("Request" + new Gson().toJson(request));
+    return "login";
+  }
+
 
   @Bean
   public DataSource dataSource() throws SQLException {
